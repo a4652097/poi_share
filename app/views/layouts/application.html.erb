@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Poi分享社区(全球最小的分享社区)</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body style="background-color: #FAFAFA;margin: 0px;">
+<div style="background-color: #fff;width: 100%;height: 50px;">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container" style="line-height: 3;">
+      <%= link_to "首页", root_path, style:"text-decoration:none;color:#000"%>
+      <% if user_signed_in?%>
+        <%= link_to '注销登陆',destroy_user_session_path,method: :delete, style:"float: right;text-decoration:none;color:#000"%>
+      <% else %>
+        <%=link_to '登录', user_session_path, style:"float: right;text-decoration:none;color:#000" %>
+      <% end %>
+    </div>
+  </nav>
+</div>
+<%= yield %>
+
+</body>
+</html>
