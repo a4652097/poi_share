@@ -1,6 +1,6 @@
-class CreatePosts < ActiveRecord::Migration
+class CreateResources < ActiveRecord::Migration
   def change
-    create_table :posts do |t|
+    create_table :resources do |t|
       t.string :title
       t.string :content
       t.string :classification

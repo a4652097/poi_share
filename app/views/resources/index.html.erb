@@ -42,7 +42,7 @@
       <div class="panel-heading ">分享一下<span class="glyphicon glyphicon-arrow-down"></span></div>
       <div class="panel-body">
         <div class="btn-group">
-          <button type="button" class="btn btn-danger"><%= link_to '发布新帖', new_resource_path, style:"color: #fff;text-decoration: none;"%></button>
+          <button type="button" class="btn btn-danger"><%= link_to '发布新帖', new_resource_path, 'data-no-turbolink' => true, style:"color: #fff;text-decoration: none;"%></button>
           <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
             <span class="caret"></span>
             <span class="sr-only">Toggle Dropdown</span>
