@@ -3,7 +3,7 @@ class CreateResources < ActiveRecord::Migration
     create_table :resources do |t|
       t.string :title
       t.string :content
-      t.string :classification
+      t.integer :classification_id
 
       t.timestamps
     end

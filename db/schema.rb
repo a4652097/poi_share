@@ -19,18 +19,10 @@ ActiveRecord::Schema.define(version: 20150302101039) do
     t.datetime "updated_at"
   end
 
-  create_table "posts", force: true do |t|
-    t.string   "title"
-    t.string   "content"
-    t.string   "classification"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "resources", force: true do |t|
     t.string   "title"
     t.string   "content"
-    t.string   "classification"
+    t.integer  "classification_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

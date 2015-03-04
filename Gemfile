@@ -4,6 +4,8 @@ gem 'bootstrap-sass'
 gem 'devise'
 #富文本编辑器
 gem 'rails_kindeditor'
+#调试工具
+gem 'pry-rails', :group => :development
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
 # Use sqlite3 as the database for Active Record
