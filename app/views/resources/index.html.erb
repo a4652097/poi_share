@@ -65,7 +65,7 @@
           </button>
           <ul class="dropdown-menu" role="menu">
           <% @classifications.each do |c|%>
-            <li><a href="<%=new_resource_path(c.id)%>" data-no-turbolink=true><%= c.name%></a></li>
+            <li><a href="<%=new_resource_path(classification: c.name)%>" data-no-turbolink=true><%= c.name%></a></li>
           <% end %>
           </ul>
         </div>
@@ -74,5 +74,6 @@
   </div>
 <% else %>
 <% end %>
-  <div class="right_content"></div>
+  <div class="right_content">
+  </div>
 </div>
