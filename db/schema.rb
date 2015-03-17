@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20150302101039) do
 
   create_table "resources", force: true do |t|
     t.string   "title"
-    t.string   "content"
+    t.text     "content"
     t.integer  "classification_id"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -1,26 +1,4 @@
-<%= image_tag "logo.jpg", style:"width:100%;height:250px;"%>
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="margin-left:25%;">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">全部<span class="sr-only">(current)</span></a></li>
-          <li><a href="#">软件</a></li>
-          <li><a href="#">书籍</a></li>
-          <li><a href="#">电影</a></li>
-          <li><a href="#">教育</a></li>
-          <li><a href="#">游戏</a></li>
-        </ul>
-        <form class="navbar-form navbar-left" role="search" style="margin-left: 22%;">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="关键字搜索">
-          </div>
-          <button type="submit" class="btn btn-default">搜索</button>
-        </form>
-
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>
+<%= render "form"%>
 <div>
   <div class="left_content">
     <div style="background-color:#D9EDF7;height:40px;width:100%;">
@@ -36,7 +14,7 @@
     <div style="height:40px;width:100%;border-bottom: 1px solid #eeeeee;">
       <div style="width:58%;height:100%;float:left">
         <span style="color:#F4A460">[<%= r.classification.name%>]</span>
-        <a href="" style="font-size:110%;color:#000;line-height: 2.5;">
+        <a href="<%= resource_path(r.id)%>" style="font-size:110%;color:#000;line-height: 2.5;">
           <% if r.title.length>17%>
             <%= r.title[0..17]+'...'%>
           <% else %>
@@ -77,3 +55,10 @@
   <div class="right_content">
   </div>
 </div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#1").click(function(){
+      $("#1").addClass("active")
+     });
+  });
+</script>

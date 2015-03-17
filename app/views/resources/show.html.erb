@@ -1,0 +1,58 @@
+<%= render 'form'%>
+<div style="float:left;  margin-left: 9%;">
+  <div class="show_left_content">
+    <div style="background-color:#F5F5F5;height:85px;width:100%;">
+      <strong style="font-size: 150%;padding-left: 2%;line-height: 3;">
+        <% if @resource.title.size>30%>
+          <%= @resource.title[0..30]+'...'%>
+        <% else %>
+          <%= @resource.title%>
+        <% end %>
+      </strong><br>
+      <span class="min_title"><%= @resource.classification.name%></span>
+      <span class="min_title">
+        <% if release_time(@resource.created_at)==0%>
+        由()于24小时内发布
+        <% else %>
+         由()于<%= release_time(@resource.created_at)%>天前发布
+        <% end %>
+      </span>
+    </div>
+    <div>
+     <%= raw @resource.content%>
+    </div>
+  </div>
+  <div class="left_comment">
+    <div style="background-image:url(/assets/commont.jpg);height:50px;width:100%;text-align: center;">
+      <strong style="line-height: 50px;">评论列表</strong>
+    </div>
+  </div>
+</div>
+<div style="float: left;">
+<% if user_signed_in?%>
+  <div class="right_top" style="margin-left: -274px;">
+    <div class="panel panel-info">
+      <div class="panel-heading ">分享一下<span class="glyphicon glyphicon-arrow-down"></span></div>
+      <div class="panel-body">
+        <div class="btn-group">
+          <button type="button" class="btn btn-danger"><%= link_to '发布新帖', new_resource_path, 'data-no-turbolink' => true, style:"color: #fff;text-decoration: none;"%></button>
+          <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+          <% @classifications.each do |c|%>
+            <li><a href="<%=new_resource_path(classification: c.name)%>" data-no-turbolink=true><%= c.name%></a></li>
+          <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+<% else %>
+<% end %>
+  <div class="right_content" style="margin-left: -274px;">
+
+  </div>
+</div>
+</div>

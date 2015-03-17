@@ -13,6 +13,7 @@
       <%= link_to "首页", root_path, style:"text-decoration:none;color:#000"%>
       <% if user_signed_in?%>
         <%= link_to '注销登陆',destroy_user_session_path,method: :delete, style:"float: right;text-decoration:none;color:#000"%>
+        <span style="float:right;padding-right: 3%;"><%= current_user.email%></span>
       <% else %>
         <%=link_to '登录', user_session_path, style:"float: right;text-decoration:none;color:#000" %>
       <% end %>
