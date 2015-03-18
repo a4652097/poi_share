@@ -4,7 +4,6 @@
 .left_content{
   background-color: #fff;
   width: 600px;
-  height: 800px;
   margin-left: 25.8%;
   float: left;
 }
@@ -32,13 +31,23 @@
   background-color: #fff;
   width: 600px;
   margin-left: 25.8%;
-  float: left;
 }
 .left_comment{
   background-color: #fff;
   width: 600px;
-  height:300px;
   margin-left: 25.8%;
-  float: left;
   margin-top: 20px;
+}
+.head{
+  width:55px;
+  height:55px;
+  margin-top: 11px;
+  margin-left: 11px;
+}
+.comment{
+  width: 600px;
+  height:300px;
+  margin-top: 20px;
+  margin-left: 26%;
+  text-align: center;
 }

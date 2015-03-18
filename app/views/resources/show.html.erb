@@ -1,5 +1,5 @@
 <%= render 'form'%>
-<div style="float:left;  margin-left: 9%;">
+<div style="float:left;  margin-left: 18%;">
   <div class="show_left_content">
     <div style="background-color:#F5F5F5;height:85px;width:100%;">
       <strong style="font-size: 150%;padding-left: 2%;line-height: 3;">
@@ -23,14 +23,36 @@
     </div>
   </div>
   <div class="left_comment">
-    <div style="background-color:#F0F8FF;height:50px;width:100%;text-align: center;">
+    <div style="background-color:#F0F8FF;height:50px;width:100%;text-align: center;margin-bottom: 10px;">
       <strong style="line-height: 50px;">评论列表</strong>
     </div>
+    <% @comment_list.each_with_index  do |c, index|%>
+    <div style="height:80px;">
+      <div style="float:left">
+        <%= image_tag 'head.jpg', class:"head"%>
+        <p style="padding-left:11px;font-size:85%;"><%= c.user.email.split("@")[0]%></p>
+      </div>
+      <div style="padding-top: 13px;">
+        <span><%= raw c.content%></span>
+      </div>
+      <div style="float: right;position: relative;top: 50%;">
+        <%= index+1%>楼
+      </div>
+    </div><hr>
+    <% end %>
+  </div>
+  <div class="comment">
+    <%= form_for :comment, url:{action: 'comment'} do |f|%>
+      <%= f.kindeditor :content, :allowFileManager => false, :simple_mode => true%>
+      <span><%= f.submit '评论', style:"margin-top: 5%;margin-bottom: 5%;", class:"btn btn-info"%></span>
+      <%= f.hidden_field :user_id, value: current_user.id%>
+      <%= f.hidden_field :resource_id, value: params[:id]%>
+    <% end %>
   </div>
 </div>
 <div style="float: left;">
 <% if user_signed_in?%>
-  <div class="right_top" style="margin-left: -274px;">
+  <div class="right_top" style="margin-left: 56%;">
     <div class="panel panel-info">
       <div class="panel-heading ">分享一下<span class="glyphicon glyphicon-arrow-down"></span></div>
       <div class="panel-body">
@@ -51,7 +73,7 @@
   </div>
 <% else %>
 <% end %>
-  <div class="right_content" style="margin-left: -274px;">
+  <div class="right_content" style="margin-left: 56%;">
 
   </div>
 </div>

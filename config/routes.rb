@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'resources#index'
-  resources :resources, only:[:index,:new, :create, :show]
+  resources :resources, only:[:index,:new, :create, :show] do
+    member do
+      post :comment
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

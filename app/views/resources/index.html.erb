@@ -14,7 +14,7 @@
     <div style="height:40px;width:100%;border-bottom: 1px solid #eeeeee;">
       <div style="width:58%;height:100%;float:left">
         <span style="color:#F4A460">[<%= r.classification.name%>]</span>
-        <a href="<%= resource_path(r.id)%>" style="font-size:110%;color:#000;line-height: 2.5;">
+        <a href="<%= resource_path(r.id,'data-no-turbolink' => true) %>"  style="font-size:110%;color:#000;line-height: 2.5;">
           <% if r.title.length>17%>
             <%= r.title[0..17]+'...'%>
           <% else %>
@@ -22,9 +22,15 @@
           <% end %>
         </a>
       </div>
-      <div style="width:15%;height:100%;float:left;text-align:center;"><%= r.user.email%><p><%= r.created_at.to_time.strftime('%Y-%m-%d')%></p></div>
-      <div style="width:12%;height:100%;float:left;text-align:center"></div>
-      <div style="width:15%;height:100%;float:left;text-align:center"></div>
+      <div style="width:15%;height:100%;float:left;text-align:center;"><%= r.user.email.split("@")[0]%><p><%= r.created_at.to_time.strftime('%Y-%m-%d')%></p></div>
+      <div style="width:12%;height:100%;float:left;text-align:center;padding-top: 8px;"><span class="badge"><%= r.comments.size%></span></div>
+      <div style="width:15%;height:100%;float:left;text-align:center;padding-top: 10px;">
+        <% if r.comments.last.present?%>
+          <%= r.comments.last.user.email.split("@")[0]%>
+        <% else %>
+          <span>无人回复</span>
+        <% end %>
+      </div>
     </div>
     <% end %>
   </div>
