@@ -1,9 +1,11 @@
 class ResourcesController < ApplicationController
   def index
     if params[:classification].present?
-      @resources = Resource.where("classification_id=?","#{params[:classification]}")
+      @resources = Resource.where("classification_id=?","#{params[:classification]}").page(params[:page]).per(10)
+    elsif params[:keyword].present?
+      @resources = Resource.where("title like ?","%#{params[:keyword]}%").page(params[:page]).per(10)
     else
-      @resources = Resource.all
+      @resources = Resource.all.page(params[:page]).per(10)
     end
     @classifications = Classification.all
   end
@@ -23,7 +25,7 @@ class ResourcesController < ApplicationController
   def show
     @classifications = Classification.all
     @resource = Resource.find(params[:id])
-    @comment_list = Comment.where("resource_id=?","#{params[:id]}")
+    @comment_list = Comment.where("resource_id=?","#{params[:id]}").page(params[:page]).per(10)
   end
 
   def comment

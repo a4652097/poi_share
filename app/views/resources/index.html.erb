@@ -1,67 +1,76 @@
 <%= render "form"%>
-<div>
-  <div class="left_content">
-    <div style="background-color:#D9EDF7;height:40px;width:100%;">
-      <a href="" class="a" style="text-decoration: none;margin-left: 10px;">全部</a>
-      <a href="" class="a" style="text-decoration: none;margin-left: 5px;">最新</a>
-      <a href="" class="a" style="text-decoration: none;margin-left: 5px;">热门</a>
-      <a href="" class="a" style="text-decoration: none;margin-left: 5px;">精华</a>
-      <span style="text-decoration: none;margin-left: 210px;">作者/日期</span>
-      <span style="text-decoration: none;margin-left: 35px;">回复</span>
-      <span style="text-decoration: none;margin-left: 35px;">最后回复</span>
-    </div>
-    <% @resources.each do |r|%>
-    <div style="height:40px;width:100%;border-bottom: 1px solid #eeeeee;">
-      <div style="width:58%;height:100%;float:left">
-        <span style="color:#F4A460">[<%= r.classification.name%>]</span>
-        <a href="<%= resource_path(r.id,'data-no-turbolink' => true) %>"  style="font-size:110%;color:#000;line-height: 2.5;">
-          <% if r.title.length>17%>
-            <%= r.title[0..17]+'...'%>
+<div >
+  <div>
+    <div class="left_content">
+      <div style="background-color:#D9EDF7;height:40px;width:100%;">
+        <a href="" class="a" style="text-decoration: none;margin-left: 10px;">全部</a>
+        <a href="" class="a" style="text-decoration: none;margin-left: 5px;">最新</a>
+        <a href="" class="a" style="text-decoration: none;margin-left: 5px;">热门</a>
+        <a href="" class="a" style="text-decoration: none;margin-left: 5px;">精华</a>
+        <span style="text-decoration: none;margin-left: 203px;">作者/日期</span>
+        <span style="text-decoration: none;margin-left: 32px;">回复</span>
+        <span style="text-decoration: none;margin-left: 30px;">最后回复</span>
+      </div>
+      <% @resources.each do |r|%>
+      <div style="height:40px;width:100%;border-bottom: 1px solid #eeeeee;" class="col-sm-12">
+        <div style="width:58%;height:100%;float:left;margin-left: -12px;">
+          <span style="color:#F4A460">[<%= r.classification.name%>]</span>
+          <a href="<%= resource_path(r.id)%>" data-no-turbolink = "true"  style="font-size:110%;color:#000;line-height: 2.5;">
+            <% if r.title.length>17%>
+              <%= r.title[0..17]+'...'%>
+            <% else %>
+              <%= r.title%>
+            <% end %>
+          </a>
+        </div>
+        <div style="width:15%;height:100%;float:left;text-align:center;margin-left: 12px;"><%= r.user.email.split("@")[0]%><p><%= r.created_at.to_time.strftime('%Y-%m-%d')%></p></div>
+        <div style="width:12%;height:100%;float:left;text-align:center;padding-top: 8px;"><span class="badge"><%= r.comments.size%></span></div>
+        <div style="width:15%;height:100%;float:left;text-align:center;padding-top: 10px;">
+          <% if r.comments.last.present?%>
+            <%= r.comments.last.user.email.split("@")[0]%>
           <% else %>
-            <%= r.title%>
+            <span>无人回复</span>
           <% end %>
-        </a>
+        </div>
       </div>
-      <div style="width:15%;height:100%;float:left;text-align:center;"><%= r.user.email.split("@")[0]%><p><%= r.created_at.to_time.strftime('%Y-%m-%d')%></p></div>
-      <div style="width:12%;height:100%;float:left;text-align:center;padding-top: 8px;"><span class="badge"><%= r.comments.size%></span></div>
-      <div style="width:15%;height:100%;float:left;text-align:center;padding-top: 10px;">
-        <% if r.comments.last.present?%>
-          <%= r.comments.last.user.email.split("@")[0]%>
-        <% else %>
-          <span>无人回复</span>
-        <% end %>
-      </div>
+      <% end %>
+      <div style="text-align:center;"><%= paginate @resources %></div>
     </div>
-    <% end %>
   </div>
-</div>
-<div style="float: left;">
-<% if user_signed_in?%>
-  <div class="right_top">
-    <div class="panel panel-info">
-      <div class="panel-heading ">分享一下<span class="glyphicon glyphicon-arrow-down"></span></div>
-      <div class="panel-body">
-        <div class="btn-group">
-          <button type="button" class="btn btn-danger"><%= link_to '发布新帖', new_resource_path, 'data-no-turbolink' => true, style:"color: #fff;text-decoration: none;"%></button>
-          <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            <span class="caret"></span>
-            <span class="sr-only">Toggle Dropdown</span>
-          </button>
-          <ul class="dropdown-menu" role="menu">
-          <% @classifications.each do |c|%>
-            <li><a href="<%=new_resource_path(classification: c.name)%>" data-no-turbolink=true><%= c.name%></a></li>
-          <% end %>
-          </ul>
+  <div style="float: left;">
+  <% if user_signed_in?%>
+    <div class="right_top">
+      <div class="panel panel-info">
+        <div class="panel-heading ">分享一下<span class="glyphicon glyphicon-arrow-down"></span></div>
+        <div class="panel-body">
+          <div class="btn-group">
+            <button type="button" class="btn btn-danger"><%= link_to '发布新帖', new_resource_path, 'data-no-turbolink' => true, style:"color: #fff;text-decoration: none;"%></button>
+            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              <span class="caret"></span>
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+            <% @classifications.each do |c|%>
+              <li><a href="<%=new_resource_path(classification: c.name)%>" data-no-turbolink=true><%= c.name%></a></li>
+            <% end %>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-<% else %>
-<% end %>
-  <div class="right_content">
+  <% else %>
+  <% end %>
+    <div class="right_content">
+      <p style="text-align:center"><%= image_tag 'notice.png'%></p>
+      <p style="text-align:center">占位</p>
+      <p style="text-align:center">占位</p>
+      <p style="text-align:center"><%= image_tag 'link.png'%></p>
+    </div>
   </div>
 </div>
-<!-- <script type="text/javascript">
+
+<!-- <div class="footer"></div>
+ --><!-- <script type="text/javascript">
   $(document).ready(function(){
     $("#1").click(function(){
       $("#1").addClass("active")
