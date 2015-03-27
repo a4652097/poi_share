@@ -12,9 +12,9 @@
       <span class="min_title"><%= @resource.classification.name%></span>
       <span class="min_title">
         <% if release_time(@resource.created_at)==0%>
-          由<%=@resource.user.email%>于24小时内发布
+          由<%=@resource.user.nickname%>于24小时内发布
         <% else %>
-          由<%=@resource.user.email%>于<%= release_time(@resource.created_at)%>天前发布
+          由<%=@resource.user.nickname%>于<%= release_time(@resource.created_at)%>天前发布
         <% end %>
       </span>
     </div>
@@ -28,9 +28,9 @@
     </div>
     <% @comment_list.each_with_index  do |c, index|%>
     <div style="height:80px;">
-      <div style="float:left">
-        <%= image_tag 'head.jpg', class:"head"%>
-        <p style="padding-left:11px;font-size:85%;"><%= c.user.email.split("@")[0]%></p>
+      <div style="float:left;text-align: center;">
+        <%= image_tag(c.user.avatar_url(:large), class:"head")%>
+        <p style="padding-left:11px;font-size:85%;"><%= c.user.nickname%></p>
       </div>
       <div style="padding-top: 13px;">
         <span><%= raw c.content%></span>

@@ -6,6 +6,8 @@ Rails.application.routes.draw do
       post :comment
     end
   end
+  resources :users, only:[:edit, :update] do
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -9,6 +9,10 @@ gem 'pry-rails', :group => :development
 #分页
 gem 'kaminari'
 gem 'simple_form'
+#图片上传
+gem 'carrierwave'
+#图片控制大小
+gem 'mini_magick'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
 # Use sqlite3 as the database for Active Record

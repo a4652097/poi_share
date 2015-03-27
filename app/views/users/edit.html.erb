@@ -1,0 +1,16 @@
+<div class="col-sm-12">
+  <div class="col-sm-4"></div>
+  <div class="info col-sm-4" >
+    <%= form_for @user, html:{style:"padding-left: 70px;"} do |f|%>
+      <p>账号：<%= @user.email%></p>
+      <p>昵称：<%= f.text_field :nickname%></p>
+      <p>签名：<%= f.text_area :signature, style:"width:158px;"%></p>
+      <p>城市：<%= f.text_field :city%></p>
+      <div class="field">
+      <p>头像：<%= image_tag(@user.avatar_url(:thumb)) if @user.avatar %></p>
+        <%= f.file_field :avatar %><%= f.hidden_field :avatar_cache %>
+      </div>
+      <%= f.submit "保存", class:"btn btn-info", style:"margin-top: 5%;margin-left: 12%;"%>
+    <% end %>
+  </div>
+</div>

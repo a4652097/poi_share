@@ -148,11 +148,13 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass
+  carrierwave
   coffee-rails (~> 4.0.0)
   devise
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
+  mini_magick
   mysql2
   pry-rails
   rails (= 4.1.8)
