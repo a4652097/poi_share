@@ -19,6 +19,8 @@ class ResourcesController < ApplicationController
     @resource = Resource.new(resourecs_params)
     if @resource.save
       redirect_to resources_path
+    else
+      redirect_to new_resource_path
     end
   end
 
