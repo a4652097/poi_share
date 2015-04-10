@@ -21,6 +21,12 @@
     <div style="padding-top:2%;padding-bottom:2%">
      <%= raw @resource.content%>
     </div>
+    <% if current_user==@resource.user%>
+    <div style="background-color:#F5F5F5;height:35px;width:100%;">
+      <%= link_to '', resource_path(id:@resource.id), method: :delete, class:"glyphicon glyphicon-trash", style:"text-decoration: none;color: #000;float:right;line-height:40px;margin-right:3%", title:"删除本贴"%>
+      <%= link_to '', edit_resource_path(id:@resource.id), class:"glyphicon glyphicon-pencil", style:"text-decoration: none;color: #000;float:right;line-height:40px;margin-right:3%", title:"编辑本贴"%>
+    </div>
+    <% end %>
   </div>
   <div class="left_comment">
     <div style="background-color:#F0F8FF;height:50px;width:100%;text-align: center;margin-bottom: 10px;">

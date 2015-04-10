@@ -4,7 +4,7 @@
     <%= form_for @user, html:{style:"padding-left: 70px;"} do |f|%>
       <p>账号：<%= @user.email%></p>
       <p>昵称：<%= f.text_field :nickname%></p>
-      <p>签名：<%= f.text_area :signature, style:"width:158px;"%></p>
+      <p>签名：<%= f.text_area :signature, style:"width:158px;", class:"form-control"%></p>
       <p>城市：<%= f.text_field :city%></p>
       <div class="field">
       <p>头像：<%= image_tag(@user.avatar_url(:thumb)) if @user.avatar %></p>
