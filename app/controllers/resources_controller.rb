@@ -1,5 +1,5 @@
 class ResourcesController < ApplicationController
-  before_action :params_id, only:[:destroy, :show, :edit, :update]
+  before_action :get_resource_id, only:[:destroy, :show, :edit, :update]
   def index
     if params[:classification].present?
       @resources = Resource.where("classification_id=?","#{params[:classification]}").page(params[:page]).per(10)
@@ -21,7 +21,7 @@ class ResourcesController < ApplicationController
     if @resource.save
       redirect_to resources_path
     else
-      redirect_to new_resource_path
+      render 'new'
     end
   end
 
@@ -34,7 +34,7 @@ class ResourcesController < ApplicationController
     @comment = Comment.new(comment_params)
     if @comment.save
      redirect_to resource_path
-   end
+    end
   end
 
   def destroy
@@ -50,7 +50,7 @@ class ResourcesController < ApplicationController
     if @resource.update(resourecs_params)
       redirect_to resource_path
     else
-      redirect_to edit_resource_path
+      render 'edit'
     end
   end
 
@@ -63,7 +63,7 @@ class ResourcesController < ApplicationController
       params.require(:comment).permit(:content, :user_id, :resource_id)
     end
 
-    def params_id
+    def get_resource_id
       @resource = Resource.find(params[:id])
     end
 end
