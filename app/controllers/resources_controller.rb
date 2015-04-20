@@ -2,11 +2,13 @@ class ResourcesController < ApplicationController
   before_action :get_resource_id, only:[:destroy, :show, :edit, :update]
   def index
     if params[:classification].present?
-      @resources = Resource.where("classification_id=?","#{params[:classification]}").page(params[:page]).per(10)
+      @resources = Resource.where("classification_id=?","#{params[:classification]}").order(updated_at: :desc).page(params[:page]).per(10)
     elsif params[:keyword].present?
-      @resources = Resource.where("title like ?","%#{params[:keyword]}%").page(params[:page]).per(10)
+      @resources = Resource.where("title like ?","%#{params[:keyword]}%").order(updated_at: :desc).page(params[:page]).per(10)
+    elsif params[:tag].present?
+      @resources = Resource.essence.order(updated_at: :desc).page(params[:page]).per(10)
     else
-      @resources = Resource.all.page(params[:page]).per(10)
+      @resources = Resource.order(updated_at: :desc).page(params[:page]).per(10)
     end
     @classifications = Classification.all
   end

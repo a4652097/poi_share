@@ -3,10 +3,10 @@
   <div>
     <div class="left_content">
       <div style="background-color:#D9EDF7;height:40px;width:100%;">
-        <a href="" class="a" style="text-decoration: none;margin-left: 10px;">全部</a>
-        <a href="" class="a" style="text-decoration: none;margin-left: 5px;">最新</a>
+        <a href="<%= resources_path%>" class="a" style="text-decoration: none;margin-left: 10px;">全部</a>
+        <a href="<%= resources_path%>" class="a" style="text-decoration: none;margin-left: 5px;">最新</a>
         <a href="" class="a" style="text-decoration: none;margin-left: 5px;">热门</a>
-        <a href="" class="a" style="text-decoration: none;margin-left: 5px;">精华</a>
+        <a href="<%= resources_path(tag: 'essence')%>" class="a" style="text-decoration: none;margin-left: 5px;">精华</a>
         <span style="text-decoration: none;margin-left: 203px;">作者/日期</span>
         <span style="text-decoration: none;margin-left: 32px;">回复</span>
         <span style="text-decoration: none;margin-left: 30px;">最后回复</span>
@@ -60,11 +60,11 @@
     </div>
   <% else %>
   <% end %>
-    <div class="right_content">
-      <p style="text-align:center"><%= image_tag 'notice.png'%></p>
+    <div class="right_content" style="background-image: url(/assets/img.jpeg);">
+<!--       <p style="text-align:center"><%= image_tag 'notice.png'%></p>
       <p style="text-align:center">占位</p>
       <p style="text-align:center">占位</p>
-      <p style="text-align:center"><%= image_tag 'link.png'%></p>
+      <p style="text-align:center"><%= image_tag 'link.png'%></p> -->
     </div>
   </div>
 </div>

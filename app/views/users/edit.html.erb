@@ -3,7 +3,7 @@
   <div class="info col-sm-4" >
     <%= form_for @user, html:{style:"padding-left: 70px;"} do |f|%>
       <p>账号：<%= @user.email%></p>
-      <p>昵称：<%= f.text_field :nickname%></p>
+      <p>昵称：<%= f.text_field :nickname, id:'nickname'%><span style="color: red;font-size: 13px;margin-left: 13px;">昵称限制为6个字</span></p>
       <p>签名：<%= f.text_area :signature, style:"width:158px;", class:"form-control"%></p>
       <p>城市：<%= f.text_field :city%></p>
       <div class="field">
@@ -14,3 +14,13 @@
     <% end %>
   </div>
 </div>
+<script type="text/javascript">
+ $(function(){
+  $("#nickname").keyup(function(){
+   var len = $(this).val().length;
+   if(len > 6){
+    $(this).val($(this).val().substring(0,6));
+   }
+  });
+ });
+</script>

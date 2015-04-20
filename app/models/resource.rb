@@ -4,4 +4,6 @@ class Resource < ActiveRecord::Base
   has_many :comments
   validates :title, presence: true
   validates :content, presence: true
+
+  enum tag: { essence: 0 }
 end
