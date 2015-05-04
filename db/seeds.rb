@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Classification.find_or_create_by(name: '软件')
+Classification.find_or_create_by(name: '书籍')
+Classification.find_or_create_by(name: '电影')
+Classification.find_or_create_by(name: '教育')
+Classification.find_or_create_by(name: '游戏')

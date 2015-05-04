@@ -49,12 +49,14 @@
   </div>
     <div style="text-align:center;margin-left: 50%;"><%= paginate @comment_list %></div>
   <div class="comment">
+  <% if current_user.present?%>
     <%= form_for :comment, url:{action: 'comment'} do |f|%>
       <%= f.kindeditor :content, :allowFileManager => false, :simple_mode => true%>
       <span><%= f.submit '评论', style:"margin-top: 5%;margin-bottom: 5%;", class:"btn btn-info"%></span>
       <%= f.hidden_field :user_id, value: current_user.id%>
       <%= f.hidden_field :resource_id, value: params[:id]%>
     <% end %>
+  <% end %>
   </div>
 </div>
 <div style="float: left;">
