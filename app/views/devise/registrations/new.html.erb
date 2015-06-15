@@ -9,6 +9,11 @@
     </div>
 
     <div class="field">
+    <br/>
+      昵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称 : <%= f.text_field :nickname, autofocus: true, class:"form-control" %>
+    </div>
+
+    <div class="field">
       <% if @validatable %>
       <% end %><br />
       密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码 : <%= f.password_field :password, autocomplete: "off", class:"form-control", :placeholder=> "密码长度不小于#{@minimum_password_length} 个字符" %>
