@@ -24,7 +24,7 @@
     <% if current_user==@resource.user%>
     <div style="background-color:#F5F5F5;height:35px;width:100%;">
       <%= link_to '', resource_path(id:@resource.id), method: :delete, class:"glyphicon glyphicon-trash", style:"text-decoration: none;color: #000;float:right;line-height:40px;margin-right:3%", title:"删除本贴"%>
-      <%= link_to '', edit_resource_path(id:@resource.id), class:"glyphicon glyphicon-pencil", style:"text-decoration: none;color: #000;float:right;line-height:40px;margin-right:3%", title:"编辑本贴"%>
+      <%= link_to '', edit_resource_path(id:@resource.id), class:"glyphicon glyphicon-pencil", style:"text-decoration: none;color: #000;float:right;line-height:40px;margin-right:3%", title:"编辑本贴", 'data-no-turbolink' => true%>
     </div>
     <% end %>
   </div>
@@ -35,7 +35,11 @@
     <% @comment_list.each_with_index  do |c, index|%>
     <div style="height:80px;">
       <div style="float:left;text-align: center;">
-        <%= image_tag(c.user.avatar_url(:large), class:"head")%>
+        <%if c.user.avatar_url.present?%>
+          <%= image_tag(c.user.avatar_url(:large), class:"head")%>
+        <% else %>
+          <%= image_tag 'head.jpg', class:"head", style:"height:55px;width:55px;"%>
+        <% end %>
         <p style="padding-left:11px;font-size:85%;"><%= c.user.nickname%></p>
       </div>
       <div style="padding-top: 13px;">
@@ -59,9 +63,9 @@
   <% end %>
   </div>
 </div>
-<div style="float: left;">
+<div style="float: left;margin-left: 8%;">
 <% if user_signed_in?%>
-  <div class="right_top" style="margin-left: 56%;">
+  <div class="right_top" >
     <div class="panel panel-info">
       <div class="panel-heading ">分享一下<span class="glyphicon glyphicon-arrow-down"></span></div>
       <div class="panel-body">
@@ -82,7 +86,7 @@
   </div>
 <% else %>
 <% end %>
-  <div class="right_content" style="margin-left: 56%;">
+  <div class="right_content">
 
   </div>
 </div>
